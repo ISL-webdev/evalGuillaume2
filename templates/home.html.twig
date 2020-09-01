@@ -2,12 +2,25 @@
 {% block content %}
     <div class="post-preview">
 
-        <h2 class="post-title">
+        <h1 class="post-title">
             Bienvenue au Cocktail Storehouse
-        </h2>
-        <h3 class="post-subtitle">
+        </h1>
+        <h2 class="post-subtitle">
             Les mélanges les plus frais
-        </h3>
+        </h2>
+        <hr>
+
+        {% for cocktail in cocktails %}
+        <div class="post-preview">
+            <h2 href="" class="post-title">
+                {{ cocktail.nom }}
+            </h2>
+            <h3 class="post-subtitle">
+                {{ cocktail.description }}
+            </h3>
+        </div>
+        {% endfor %}
+
 
     </div>
 {% endblock %}

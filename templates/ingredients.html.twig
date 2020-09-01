@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+    <div class="post-preview">
+
+        <h1 class="post-title">
+            Liste des ingrédients
+        </h1>
+        <hr>
+
+        {% for ingredient in ingredients %}
+            <div class="post-preview">
+                <h2 href="" class="post-title">
+                    {{ ingredient.nom }}
+                </h2>
+                <h3 class="post-subtitle">
+                    {{ ingredient.description }}
+                </h3>
+            </div>
+        {% endfor %}
+
+
+    </div>
+{% endblock %}
