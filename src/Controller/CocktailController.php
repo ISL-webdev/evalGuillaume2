@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use App\Entity\Cocktail;
 use App\Entity\Ingredients;
+use App\Form\CreateCocktailType;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,10 +35,12 @@ class CocktailController extends AbstractController
     /**
      * @Route("/cocktail/create")
      */
-    public function create(Request $request, ObjectManager $manager)
+    public function create(Request $request)
     {
-        $article = new Article();
-        return $this->render('cocktails/create.html.twig', ['title'=>'Création de votre cocktail', /*'cocktail' => $cocktail*/]);
+        $form = $this->createForm(CreateCocktailType::class, Cocktail::class);
+
+        return $this->render('cocktails/create.html.twig', [
+            'title'=>'Création de votre cocktail', 'form'=>$form->createView()]);
     }
 
     /**
