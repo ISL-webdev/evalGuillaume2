@@ -14,7 +14,7 @@ class CocktailController extends AbstractController
      */
     public function homepage()
     {
-        return new Response("First page.");
+        return $this->render('home.html.twig', ['title'=>'Bienvenue au Storehouse']);
     }
 
     /**
@@ -22,6 +22,6 @@ class CocktailController extends AbstractController
      */
     public function create()
     {
-        return $this->render('cocktails/create.html.twig', ['title'=>'Bienvenue', 'spanHeader'=>'Cocktails', /*'cocktail' => $cocktail*/]);
+        return $this->render('cocktails/create.html.twig', ['title'=>'Création de votre cocktail', /*'cocktail' => $cocktail*/]);
     }
 }
