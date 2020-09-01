@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CocktailRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -41,6 +43,16 @@ class Cocktail
      * @ORM\Column(type="string", length=255)
      */
     private $image_url;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Ingredients::class, inversedBy="cocktails")
+     */
+    private $cocktails_ingredients;
+
+    public function __construct()
+    {
+        $this->cocktails_ingredients = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -103,6 +115,32 @@ class Cocktail
     public function setImageUrl(string $image_url): self
     {
         $this->image_url = $image_url;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Ingredients[]
+     */
+    public function getCocktailsIngredients(): Collection
+    {
+        return $this->cocktails_ingredients;
+    }
+
+    public function addCocktailsIngredient(Ingredients $cocktailsIngredient): self
+    {
+        if (!$this->cocktails_ingredients->contains($cocktailsIngredient)) {
+            $this->cocktails_ingredients[] = $cocktailsIngredient;
+        }
+
+        return $this;
+    }
+
+    public function removeCocktailsIngredient(Ingredients $cocktailsIngredient): self
+    {
+        if ($this->cocktails_ingredients->contains($cocktailsIngredient)) {
+            $this->cocktails_ingredients->removeElement($cocktailsIngredient);
+        }
 
         return $this;
     }
