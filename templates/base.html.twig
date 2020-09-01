@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="Guillaume">
+        <title>{{title}}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Spartan&display=swap">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+            <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        {% endblock %}
+    </head>
+    <body>
+    {% block body %}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="/">Cocktails Storehouse</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor02">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Liste des Cocktails</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Ingredients</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Catégories</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Cat 1</a>
+                            <a class="dropdown-item" href="#">Cat 2</a>
+                            <a class="dropdown-item" href="#">Cat 3</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Toutes les catégories</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- Main Content -->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-10 mx-auto">
+                    {% block content %}
+
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+    {% block javascripts %}
+        <!-- Bootstrap core JavaScript -->
+        <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+        <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
+        <!-- Custom scripts for this template -->
+        <script src="{{ asset('js/clean-blog.min.js') }}"></script>{% endblock %}
+
+    </body>
+</html>
